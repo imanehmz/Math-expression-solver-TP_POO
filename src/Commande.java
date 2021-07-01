@@ -5,10 +5,14 @@ public abstract class Commande {
     /*public boolean isFunction(){
         return true;
     }*/
+    public boolean expressionCorrect(){
+        return true;
+    }
     public double countExpression(){
         return 0;
     }
     public boolean bracketsCorrect(){
+
         return true;
     }
 }

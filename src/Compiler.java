@@ -2,9 +2,10 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Set;
 
-public class Interpreteur {
+public class Compiler {
     public static Set<Variable> variables;
-    public static List<String> functions = Arrays.asList("sin","cos","log") ;
+    public static List<String> functions = Arrays.asList("sin","cos","log", "abs", "log") ;
+
     void setVariables(Set<Variable> variables){
         this.variables = variables; //rectify this later
     }
@@ -19,7 +20,5 @@ public class Interpreteur {
         }
         return false;
     }
-    public static  void main(String args[]){
 
-    }
 }

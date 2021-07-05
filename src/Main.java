@@ -1,3 +1,4 @@
+import java.util.HashSet;
 import java.util.Scanner;
 
 public class Main {
@@ -5,6 +6,8 @@ public class Main {
         /** i recommend putting the main inside the Main class, leave Interpreteur (that i renamed to: Compiler) clean*/
 
         // and
+        Compiler compiler = new Compiler();
+        Compiler.variables = new HashSet<Variable>();
 
         /** test these examples
          * let
@@ -35,6 +38,7 @@ public class Main {
                     try {
                         let = new LetCommand(cmd.trim());
                         System.out.println("syntax correct");
+                        let.treatment();
 
                     } catch (InvalidSyntaxException e) {
                         System.out.println(e.getMessage());
@@ -47,6 +51,12 @@ public class Main {
                     } catch (InvalidVariableNameException e) {
                         System.out.println(e.getMessage());
                     } catch (NoVariableNameException e) {
+                        System.out.println(e.getMessage());
+                    }
+                    catch (DivisionByZeroException e) {
+                        System.out.println(e.getMessage());
+                    }
+                    catch (LogForNegativeException e) {
                         System.out.println(e.getMessage());
                     }
 
@@ -56,6 +66,7 @@ public class Main {
                     try{
                         print = new PrintCommand(cmd.trim());
                         System.out.println("syntax correct");
+                        print.treatment();
                     } catch (EmptyParenthesisException e) {
                         System.out.println(e.getMessage());
                     } catch (OpeningParenthesisException e) {
@@ -71,7 +82,9 @@ public class Main {
                     }
                 }
 
-                else throw new CommandNotKnownException();
+                else if(!cmd.toLowerCase().equals("end")){
+                    throw new CommandNotKnownException();
+                }
 
             }catch (CommandNotKnownException e){
                 System.out.println(e.getMessage());

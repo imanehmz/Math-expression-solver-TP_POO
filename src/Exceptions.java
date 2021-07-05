@@ -48,5 +48,17 @@ class CommandNotKnownException extends Exception{
         return "Command not known by the compiler";
     }
 }
+class DivisionByZeroException extends Exception{
+    @Override
+    public String getMessage() {
+        return "There's an explicit division by zero";
+    }
+}
+class LogForNegativeException extends Exception{
+    @Override
+    public String getMessage() {
+        return "You're trying to apply log for a negative number";
+    }
+}
 
 
